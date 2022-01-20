@@ -49,6 +49,10 @@ def rank_up(player_power):
     if player_power > 20:
         player.group_rank = 2
         return "You are now rank 2 in {clique}!".format(clique=type(player))
+    if player_power > 30:
+        player.group_rank = 3
+        return "You are now rank 3 in {clique}!".format(clique=type(player))
+      
 
 #done setting up character type. start interactions here
 choice1 = input("You have English first with Mr. Yule. Who do you choose to sit with? Jamie or Jared?")
