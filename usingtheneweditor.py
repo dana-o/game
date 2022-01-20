@@ -9,10 +9,10 @@ class Nerds:
     return "{name} is a nerd and has a rank of {rank} within the nerds.".format(name=self.name, rank=self.group_rank)
 
 class MeanGirls:
-  def __init__(self, name, group_rank, popularity):
+  def __init__(self, name, group_rank, popularity_power):
     self.name = name
     self.group_rank = group_rank
-    self.popularity = popularity
+    self.popularity_power = popularity_power
     self.has_power = True
 
   def __repr__(self):
@@ -35,8 +35,32 @@ while player_group_case != "nerd" and player_group_case != "mean girl":
 
 if player_group_case == "nerd":
     player = Nerds(player_name, 0, 10)
-    print("Your new friends are Jamie and Janessa! You're new to the clan! Since you're new here, you rank at 0 and have intellectdan power of 10.")
+    print("Your new friends are Jamie and Janessa! You're new to the clan! Since you're new here, you rank at 0 and have intellect power of 10.")
 
 if player_group_case == "mean girl":
    player = MeanGirls(player_name, 0, 10)
    print("Your new friends are Jared and Tess! Welcome to the gang! Since you're new here, you rank at 0 and have popularity power of 10.")
+
+#group rank up checkpoint
+def rank_up(player_power):
+    if player_power > 10:
+        player.group_rank = 1
+        return "You are now rank 1 in {clique}!".format(clique=type(player))
+    if player_power > 20:
+        player.group_rank = 2
+        return "You are now rank 2 in {clique}!".format(clique=type(player))
+
+#done setting up character type. start interactions here
+choice1 = input("You have English first with Mr. Yule. Who do you choose to sit with? Jamie or Jared?")
+if choice1.lower() == "jamie":
+    if type(player) == Nerds:
+        player.intellect_power += 0
+        print("Jamie says: Hey, " + player_name + ". We have a project today.  Glad we're working together.")
+        print("You now have {intellect_power} intellect power points.".format(intellect_power=player.intellect_power))
+        print(rank_up(player.intellect_power))
+    if type(player) == MeanGirls:
+        player.popularity_power += 10
+        print("Jamie says: Oh, hey, " + player_name + ". Didn't think you'd want to work with us nerds. Guess that means you're kinda cool...")
+        print("You now have {popularity_power} popularity points.".format(popularity_power=player.popularity_power))
+        print(rank_up(player.popularity_power))
+
